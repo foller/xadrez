@@ -14,6 +14,9 @@ namespace xadresprojeto
         {
             Tabuleiro tab = new Tabuleiro(8,8);
 
+            PosicaoXadres pos = new PosicaoXadres('a', 1);
+
+
           
                 tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
                 tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
