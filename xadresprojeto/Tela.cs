@@ -14,7 +14,7 @@ namespace xadresprojeto
             
             for (int i = 0; i < tab.linhas; i++)
             {
-                Console.Write("".PadLeft(50));
+                Console.Write("".PadLeft(50) + (8 - i) + " ");
                 for (int j = 0; j < tab.colunas; j++)
                 {
                     
@@ -25,11 +25,31 @@ namespace xadresprojeto
                     }
                     else
                     {
-                        Console.Write(tab.peca(i, j) + " ");
+                        Tela.imprimirPeca(tab.peca(i, j));
+                        Console.Write(" ");
                     }
                 }
                 Console.WriteLine("");
             }
-        }    
+            Console.WriteLine(" a b c d e f g h".PadLeft(67));
+        }
+
+
+        public static void imprimirPeca(Peca peca)
+        {
+            if (peca.cor == Cor.Branca)
+            {
+                Console.Write(peca);
+            }
+            else
+            {
+                ConsoleColor aux = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write(peca);
+                Console.ForegroundColor = aux;
+            }
+        }
+
+
     }
 }
