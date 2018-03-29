@@ -33,7 +33,8 @@ namespace xadres
 
         private void colocarPecas()
         {
-            tab.colocarPeca(new Torre(tab, Cor.Preta), new PosicaoXadres('c',1).toPosicao());
+            tab.colocarPeca(new Rei(tab, Cor.Preta), new PosicaoXadres('c',1).toPosicao());
+            tab.colocarPeca(new Torre(tab, Cor.Preta), new PosicaoXadres('c', 2).toPosicao());
           
 
         }
