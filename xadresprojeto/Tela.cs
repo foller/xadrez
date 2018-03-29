@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using tabuleiro;
+using xadres;
 
 namespace xadresprojeto
 {
@@ -34,6 +35,13 @@ namespace xadresprojeto
             Console.WriteLine(" a b c d e f g h".PadLeft(67));
         }
 
+        public static PosicaoXadres lerPosicaoXadres()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0];
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadres(coluna, linha);
+        }
 
         public static void imprimirPeca(Peca peca)
         {

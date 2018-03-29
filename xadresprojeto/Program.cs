@@ -12,16 +12,26 @@ namespace xadresprojeto
     {
         static void Main(string[] args)
         {
-            Tabuleiro tab = new Tabuleiro(8,8);
-
-            PosicaoXadres pos = new PosicaoXadres('a', 1);
 
 
-          
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 0));
-                tab.colocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 7));
-                tab.colocarPeca(new Rei(tab, Cor.Branca), new Posicao(0, 2));
-                Tela.imprimirTabuleiro(tab);
+            PartidaDeXadres partida = new PartidaDeXadres();
+
+
+            while (!partida.partidaTerminada)
+            {
+                Console.Clear();
+
+                Tela.imprimirTabuleiro(partida.tab);
+                Console.Write("Origem: ");
+                Posicao origem = Tela.lerPosicaoXadres().toPosicao();
+                Console.Write("Destino: ");
+                Posicao destino = Tela.lerPosicaoXadres().toPosicao();
+
+                partida.executaMovimento(origem, destino);
+
+            }
+                
+               
 
           
             Console.ReadLine();
