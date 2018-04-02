@@ -23,10 +23,7 @@ namespace xadresprojeto
                 try
                 {
                     Console.Clear();
-                    Tela.imprimirTabuleiro(partida.tab);
-                    Console.WriteLine();
-                    Console.WriteLine("Turno: " + partida.turno);
-                    Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                    Tela.imprimirPartida(partida);
 
 
                     Console.WriteLine();
@@ -52,9 +49,6 @@ namespace xadresprojeto
                     Console.ReadLine();
             }
             }
-
-
-
             Console.ReadLine();
         }
 
