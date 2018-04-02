@@ -48,12 +48,13 @@ namespace xadres
         {
             Peca p = tab.retirarPeca(destino);
             p.decrementarQteMovimentos();
-            if(pecaCapturada != null){
+            if (pecaCapturada != null)
+            {
                 tab.colocarPeca(pecaCapturada, destino);
                 capturadas.Remove(pecaCapturada);
 
             }
-            tab.colocarPeca(p, origem); 
+            tab.colocarPeca(p, origem);
         }
 
         public void realizarJogada(Posicao origem, Posicao destino)
@@ -72,9 +73,12 @@ namespace xadres
             {
                 xeque = false;
             }
+            if (testeXequeMate(adversaria(jogadorAtual))){
+                partidaTerminada = true;
+            }else{
             turno++;
             mudaJogador();
-
+                }
             
         }
 
@@ -146,7 +150,7 @@ namespace xadres
             return aux;
         }
 
-        
+
         private Cor adversaria(Cor cor)
         {
             if (cor == Cor.Branca)
@@ -175,10 +179,12 @@ namespace xadres
         public bool estaEmXeque(Cor cor)
         {
             Peca R = rei(cor);
-            if(R == null ){
+            if (R == null)
+            {
                 throw new TabuleiroException("Nao tem rei no tabuleiro");
             }
-            foreach(Peca x in pecasEmJogo(adversaria(cor))){
+            foreach (Peca x in pecasEmJogo(adversaria(cor)))
+            {
                 bool[,] mat = x.movimentosPossiveis();
                 if (mat[R.posicao.linha, R.posicao.coluna])
                 {
@@ -188,6 +194,44 @@ namespace xadres
             }
             return false;
         }
+
+        public bool testeXequeMate(Cor cor)
+        {
+            if (!estaEmXeque(cor))
+            {
+                return false;
+
+            }
+
+            foreach (Peca x in pecasEmJogo(cor))
+            {
+                bool[,] mat = x.movimentosPossiveis();
+                for (int i = 0; i < tab.linhas; i++)
+                {
+                    for (int j = 0; j < tab.colunas; j++)
+                    {
+                        if (mat[i,j])
+                        {
+                            Posicao destino = new Posicao(i, j);
+                            Peca pecaCapturada = executaMovimento(x.posicao, new Posicao(i, j));
+                            bool testeXeque = estaEmXeque(cor);
+                            desfazMovimento(x.posicao, destino, pecaCapturada);
+                            if (!testeXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+
+            }
+
+            return true;
+
+        }
+
+
+
 
         public void colocarNovaPeca(char coluna, int linha, Peca peca)
         {

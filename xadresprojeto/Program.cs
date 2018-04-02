@@ -47,8 +47,10 @@ namespace xadresprojeto
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadLine();
+              }
             }
-            }
+            Console.Clear();
+            Tela.imprimirPartida(partida);
             Console.ReadLine();
         }
 
