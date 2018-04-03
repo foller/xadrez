@@ -40,7 +40,7 @@ namespace xadres
 
             Posicao pos = new Posicao(0, 0);
 
-            if (cor == Cor.Branco)
+            if (cor == Cor.Branca)
             {
                 pos.definirValores(posicao.linha - 1, posicao.coluna);
                 if (tab.posicaoValida(pos) && livre(pos))
@@ -49,7 +49,7 @@ namespace xadres
                 }
                 pos.definirValores(posicao.linha - 2, posicao.coluna);
                 Posicao p2 = new Posicao(posicao.linha - 1, posicao.coluna);
-                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qteMovimentos == 0)
+                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qtdMovimentos == 0)
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
@@ -68,7 +68,7 @@ namespace xadres
                 if (posicao.linha == 3)
                 {
                     Posicao esquerda = new Posicao(posicao.linha, posicao.coluna - 1);
-                    if (tab.posicaoValida(esquerda) && existeInimigo(esquerda) && tab.peca(esquerda) == partida.vulneravelEnPassant)
+                    if (tab.posicaoValida(esquerda) && existeInimigo(esquerda) )
                     {
                         mat[esquerda.linha - 1, esquerda.coluna] = true;
                     }
@@ -88,7 +88,7 @@ namespace xadres
                 }
                 pos.definirValores(posicao.linha + 2, posicao.coluna);
                 Posicao p2 = new Posicao(posicao.linha + 1, posicao.coluna);
-                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qteMovimentos == 0)
+                if (tab.posicaoValida(p2) && livre(p2) && tab.posicaoValida(pos) && livre(pos) && qtdMovimentos == 0)
                 {
                     mat[pos.linha, pos.coluna] = true;
                 }
