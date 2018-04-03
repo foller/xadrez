@@ -49,7 +49,11 @@
     <Compile Include="tabuleiro\Tabuleiro.cs" />
     <Compile Include="tabuleiro\tabuleiroException.cs" />
     <Compile Include="Tela.cs" />
+    <Compile Include="xadres\Bispo.cs" />
+    <Compile Include="xadres\Cavalo.cs" />
+    <Compile Include="xadres\Dama.cs" />
     <Compile Include="xadres\PartidaDeXadres.cs" />
+    <Compile Include="xadres\Peao.cs" />
     <Compile Include="xadres\PosicaoXadres.cs" />
     <Compile Include="xadres\Rei.cs" />
     <Compile Include="xadres\Torre.cs" />
