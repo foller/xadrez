@@ -212,10 +212,11 @@ namespace xadres
                     {
                         if (mat[i,j])
                         {
+                            Posicao origem = x.posicao;
                             Posicao destino = new Posicao(i, j);
-                            Peca pecaCapturada = executaMovimento(x.posicao, new Posicao(i, j));
+                            Peca pecaCapturada = executaMovimento(origem, destino);
                             bool testeXeque = estaEmXeque(cor);
-                            desfazMovimento(x.posicao, destino, pecaCapturada);
+                            desfazMovimento(origem, destino, pecaCapturada);
                             if (!testeXeque)
                             {
                                 return false;
@@ -242,6 +243,7 @@ namespace xadres
         {
             colocarNovaPeca('c', 2, new Rei(tab, Cor.Preta));
             colocarNovaPeca('c', 1, new Torre(tab, Cor.Preta));
+            colocarNovaPeca('c', 3, new Torre(tab, Cor.Preta));
             colocarNovaPeca('c', 8, new Torre(tab, Cor.Branca));
             colocarNovaPeca('c', 7, new Rei(tab, Cor.Branca));
 
